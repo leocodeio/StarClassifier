@@ -12,7 +12,7 @@ const ImageInput = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setOutput(true);
-    if (image) {
+    if (image && image.type.includes("image")) {
       console.log(image);
     }
   };

@@ -1,14 +1,26 @@
 import { Button, Checkbox, FloatingLabel, Label } from "flowbite-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(email, password);
+
+    await axios
+      .post(`${process.env.REACT_APP_BACKEND_URL}/user/login`, {
+        email,
+        password,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

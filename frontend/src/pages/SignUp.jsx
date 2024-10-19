@@ -1,19 +1,33 @@
 import { Button, Checkbox, FloatingLabel, Label } from "flowbite-react";
 import { useState } from "react";
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       alert("Passwords do not match");
       return;
     }
-    console.log(email, password);
+    // console.log(email, password);
+    // console.log(process.env.REACT_APP_BACKEND_URL);
+    try {
+      await axios
+        .post(`${process.env.REACT_APP_BACKEND_URL}/user/register`, {
+          email,
+          password,
+        })
+        .then((res) => {
+          console.log(res);
+        });
+    } catch (error) {
+      console.error("Signup error:", error);
+    }
     console.log("submitted");
   };
   return (
