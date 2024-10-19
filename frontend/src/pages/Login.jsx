@@ -1,11 +1,36 @@
+import {
+  Button,
+  Checkbox,
+  FloatingLabel,
+  Label,
+} from "flowbite-react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center">
-      <p className="text-white">This is the Home page</p>
-      <Link to="/signup" className="text-white">
-        Sign Up
+    <div className="flex flex-col gap-4 h-full w-full items-center justify-center">
+      <form className="flex w-[300px] flex-col gap-4 bg-gray-600 p-4 rounded-lg">
+        <div>
+          <div className="mb-2 block">
+            <FloatingLabel variant="standard" label="Your email" />
+          </div>
+        </div>
+        <div>
+          <div className="mb-2 block">
+            <FloatingLabel variant="standard" label="Your password" />
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <Checkbox id="remember" />
+          <Label htmlFor="remember">Remember me</Label>
+        </div>
+        <Button type="submit">Submit</Button>
+      </form>
+      <Link
+        to="/signup"
+        className="text-white text-sm font-semibold font-calibri"
+      >
+        Don't have an account? Sign up
       </Link>
     </div>
   );
