@@ -18,9 +18,9 @@ const Dashboard = () => {
   return (
     <>
       <Header />
-      <div className="h-full flex gap-4 md:flex-row flex-col items-center justify-center gap-10 md:gap-[150px]">
-        <Slider />
+      <div className="mt-16 h-screen flex gap-4 md:flex-row flex-col items-center justify-center gap-10 md:gap-[150px]">
         <ImageInput />
+        <Slider />
       </div>
     </>
   );
