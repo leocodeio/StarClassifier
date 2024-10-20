@@ -13,6 +13,8 @@ The project is divided into three main parts:
 
 (flows folder have the flowchart explanation of the project)
 
+![image](https://github.com/user-attachments/assets/47ad27f0-5e32-46a2-8671-dc3b9bcba140)
+
 
 ## Setup and Installation
 
@@ -33,6 +35,18 @@ The project is divided into three main parts:
    - Frontend: `cd frontend && npm start`
    - Backend: `cd backend && npm start`
    - ML Backend: `cd ml-backend && uvicorn main:app --reload`
+
+![Screenshot 2024-10-20 165952](https://github.com/user-attachments/assets/cb29dbe5-f4c9-4c7a-8880-44af07808e72)
+
+![Screenshot 2024-10-20 165959](https://github.com/user-attachments/assets/8075c917-9fce-43da-be6d-0a065419a678)
+
+![Screenshot 2024-10-20 170005](https://github.com/user-attachments/assets/4c90c156-01de-4007-a7e6-c214293559fe)
+
+![Screenshot 2024-10-20 170020](https://github.com/user-attachments/assets/1e10ef00-756e-4524-b4d5-d0cda876c66c)
+
+![Screenshot 2024-10-20 171043](https://github.com/user-attachments/assets/f5e09a3e-b9bb-49cb-b88b-e1116c315b77)
+
+![Screenshot 2024-10-20 171023](https://github.com/user-attachments/assets/f886c430-c398-4850-bdd9-407da282ec6d)
 
 ## Contributing
 
