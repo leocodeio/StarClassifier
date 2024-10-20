@@ -1,14 +1,41 @@
 import { Button, Checkbox, FloatingLabel, Label } from "flowbite-react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useAccountContext } from "../context/AccountContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { id, setId } = useAccountContext();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (id !== null) {
+      navigate("/dashboard");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email, password);
+    // console.log(email, password);
+
+    await axios
+      .post(`${process.env.REACT_APP_BACKEND_URL}/user/login`, {
+        email,
+        password,
+      })
+      .then((res) => {
+        // console.log(res);
+        setId(res.data.id);
+        navigate("/dashboard");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    setEmail("");
+    setPassword("");
   };
 
   return (

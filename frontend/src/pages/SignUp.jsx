@@ -1,20 +1,45 @@
 import { Button, Checkbox, FloatingLabel, Label } from "flowbite-react";
-import { useState } from "react";
-import {  Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useAccountContext } from "../context/AccountContext";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const { id, setId } = useAccountContext();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (id !== null) {
+      navigate("/dashboard");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       alert("Passwords do not match");
       return;
     }
-    console.log(email, password);
-    console.log("submitted");
+    // console.log(email, password);
+    // console.log(process.env.REACT_APP_BACKEND_URL);
+    try {
+      await axios
+        .post(`${process.env.REACT_APP_BACKEND_URL}/user/register`, {
+          email,
+          password,
+        })
+        .then((res) => {
+          // console.log(res);
+          setId(res.data.id);
+          navigate("/dashboard");
+        });
+    } catch (error) {
+      console.error("Signup error:", error);
+    }
   };
   return (
     <div className="flex flex-col gap-4 h-full w-full items-center justify-center">

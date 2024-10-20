@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "ml-backend"
+version = "0.1.0"
+description = ""
+authors = ["leodoeio <basicleo787@gmail.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pywavelets = "^1.7.0"
+opencv-python = "^4.10.0.84"
+seaborn = "^0.13.2"
+numpy = "^2.1.2"
+matplotlib = "^3.9.2"
+ipykernel = "^6.29.5"
+scikit-learn = "^1.5.2"
+uvicorn = "^0.32.0"
+fastapi = "^0.115.2"
+python-multipart = "^0.0.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

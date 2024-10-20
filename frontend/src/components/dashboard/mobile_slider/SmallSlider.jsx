@@ -10,10 +10,8 @@ import "./SmallSlider.css";
 // import required modules
 import { EffectCards } from "swiper/modules";
 import { items } from "../../../constants/still";
-import { useNavigate } from "react-router-dom";
 
 const SmallSlider = () => {
-  const navigate = useNavigate();
   return (
     <div>
       <Swiper
@@ -25,16 +23,12 @@ const SmallSlider = () => {
       >
         {items.map((item) => (
           <SwiperSlide key={item.id}>
-            <div className="item">
+            <div className="item w-full h-full">
               <img
                 id={item.id}
                 src={item.src}
                 alt={item.alt}
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate(`/anime/${item.alt}`);
-                  console.log("HI");
-                }}
+                className="w-full h-full object-cover rounded-lg"
               />
             </div>
           </SwiperSlide>
