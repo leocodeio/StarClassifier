@@ -1,12 +1,22 @@
 import { Button, Checkbox, FloatingLabel, Label } from "flowbite-react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAccountContext } from "../context/AccountContext";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const { id, setId } = useAccountContext();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (id !== null) {
+      navigate("/dashboard");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,12 +33,13 @@ const SignUp = () => {
           password,
         })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
+          setId(res.data.id);
+          navigate("/dashboard");
         });
     } catch (error) {
       console.error("Signup error:", error);
     }
-    console.log("submitted");
   };
   return (
     <div className="flex flex-col gap-4 h-full w-full items-center justify-center">

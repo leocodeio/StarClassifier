@@ -28,7 +28,7 @@ const ImageInput = () => {
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="mb-2 block">
-            <Label htmlFor="file-upload" value="Upload file" />
+            <Label className="text-white" htmlFor="file-upload" value="Upload file" />
           </div>
           <FileInput
             id="file-upload"
