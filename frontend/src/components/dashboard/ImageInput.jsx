@@ -22,10 +22,10 @@ const ImageInput = () => {
 
     const formData = new FormData();
     formData.append("image_data", image, image.name);
-
+    console.log(process.env.REACT_APP_ML_BACKEND_URL);
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/classify/",
+        `${process.env.REACT_APP_ML_BACKEND_URL}/classify/`,
         formData,
         {
           headers: {
