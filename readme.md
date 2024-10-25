@@ -1,6 +1,6 @@
-# PicScribe
+# StarClassifier
 
-PicScribe is a web application that allows users to upload images and classify them using machine learning. It's built with a React frontend, Express backend, and a FastAPI-based machine learning service.
+StarClassifier is a web application that allows users to upload images and classify them using machine learning. It's built with a React frontend, Express backend, and a FastAPI-based machine learning service.
 
 
 ## Project Structure
