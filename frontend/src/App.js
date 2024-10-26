@@ -6,12 +6,14 @@
   import Error from "./pages/Error";
   import Dashboard from "./pages/Dashboard";
   import AccountProvider from "./context/AccountContext";
+  import { Toaster } from 'react-hot-toast';
 
   function App() {
     return (
       <div className="App">
         <AccountProvider>
           <BrowserRouter>
+            <Toaster position="top-right" duration={4000} />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/signup" element={<SignUp />} />

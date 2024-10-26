@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAccountContext } from "../../context/AccountContext";
 import { Button } from "flowbite-react";
+import toast from "react-hot-toast";
 
 const Header = () => {
   const { setId } = useAccountContext();
@@ -9,6 +10,7 @@ const Header = () => {
 
   const handleLogout = () => {
     setId(null);
+    toast.success("Logged Out Successfully")
     navigate("/");
   };
 

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAccountContext } from "../context/AccountContext";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -29,10 +30,11 @@ const Login = () => {
       .then((res) => {
         // console.log(res);
         setId(res.data.id);
+        toast.success("Logged in Successfully")
         navigate("/dashboard");
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        toast.error(error.response.data.message);
       });
     setEmail("");
     setPassword("");
