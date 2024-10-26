@@ -14,9 +14,15 @@ import userRoutes from "./routes/user.routes.js";
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+  cors({
+    origin: [process.env.FRONTEND_URL],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+  })
+);
 connectDB();
 
 app.use("/user", userRoutes);

@@ -20,16 +20,19 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(email, password);
 
     await axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/user/login`, {
         email,
         password,
+      }, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
       })
       .then((res) => {
-        // console.log(res);
-        setId(res.data.id);
+        setId(1);
         toast.success("Logged in Successfully")
         navigate("/dashboard");
       })
