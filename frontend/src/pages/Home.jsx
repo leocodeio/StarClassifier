@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
+import { useAccountContext } from "../context/AccountContext";
+import { Navigate } from "react-router-dom";
 
 const Home = () => {
+  const { id } = useAccountContext();
+
+  if (id) {
+    return (<Navigate to='/dashboard'></Navigate>)
+  }
   return (
     <div className="text-white h-screen flex flex-col items-center justify-center text-center font-sans p-4">
       Welcome - developed by catalyst community -<b>@leocodeio</b>
