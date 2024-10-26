@@ -1,6 +1,6 @@
-# Contributing to PicScribe
+# Contributing to StarClassifier
 
-Thank you for your interest in contributing to PicScribe! We welcome contributions from the community and are grateful for any help you can provide.
+Thank you for your interest in contributing to StarClassifier! We welcome contributions from the community and are grateful for any help you can provide.
 
 ## Getting Started
 
@@ -42,4 +42,44 @@ If you have any questions or need further clarification, please open an issue or
 
 ## Conclusion
 
-Thank you for contributing to PicScribe App! We look forward to seeing your contributions.
+Thank you for contributing to StarClassifier App! We look forward to seeing your contributions.
+
+
+### DOCKER IMPLEMENTATION
+
+#### Individual Services
+
+go to /frontend
+
+```
+docker build -t fe-image .
+docker run -p 3000:3000 fe-image
+```
+
+you can access the frontend at http://localhost:3000
+
+go to /backend
+
+```
+docker build -t be-image .
+docker run -p 3001:3001 be-image
+```
+
+you can access the backend at http://localhost:3001
+
+go to /ml-backend
+
+```
+docker build -t ml-be-image .
+docker run -p 8000:8000 ml-be-image
+```
+
+you can access the ml-backend at http://localhost:8000
+
+#### All Services
+
+in the root directory
+
+```
+docker compose up
+```

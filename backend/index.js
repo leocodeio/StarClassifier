@@ -14,7 +14,6 @@ import userRoutes from "./routes/user.routes.js";
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 connectDB();
 
 app.use("/user", userRoutes);
