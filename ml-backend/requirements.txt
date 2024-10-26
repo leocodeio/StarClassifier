@@ -1,0 +1,10 @@
+pywavelets
+opencv-python
+seaborn
+numpy
+matplotlib
+ipykernel
+scikit-learn
+uvicorn
+fastapi
+python-multipart

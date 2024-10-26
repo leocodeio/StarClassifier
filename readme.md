@@ -2,7 +2,6 @@
 
 StarClassifier is a web application that allows users to upload images and classify them using machine learning. It's built with a React frontend, Express backend, and a FastAPI-based machine learning service.
 
-
 ## Project Structure
 
 The project is divided into three main parts:
@@ -15,7 +14,6 @@ The project is divided into three main parts:
 
 ![image](https://github.com/user-attachments/assets/47ad27f0-5e32-46a2-8671-dc3b9bcba140)
 
-
 ## Setup and Installation
 
 1. Clone the repository
@@ -27,9 +25,9 @@ The project is divided into three main parts:
    cd ml-backend && poetry install && poetry shell
    ```
 3. Set up environment variables:
+
    - Create a `.env` file in the `backend` directory with help of `.env.example` file
    - Create a `.env` file in the `frontend` directory with help of `.env.example` file
-
 
 4. Start the services:
    - Frontend: `cd frontend && npm start`
@@ -52,7 +50,55 @@ The project is divided into three main parts:
 
 Contributions are welcome! Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines.
 
-
 ## Acknowledgements
 
 Developed by the Catalyst community - @leocodeio
+
+### DOCKER IMPLEMENTATION
+
+#### Individual Services
+
+go to /frontend
+
+```
+docker build -t fe-image .
+docker run -p 3000:3000 fe-image
+```
+
+you can access the frontend at http://localhost:3000
+
+go to /backend
+
+```
+docker build -t be-image .
+docker run -p 3001:3001 be-image
+```
+
+you can access the backend at http://localhost:3001
+
+go to /ml-backend
+
+```
+docker build -t ml-be-image .
+docker run -p 8000:8000 ml-be-image
+```
+
+you can access the ml-backend at http://localhost:8000
+
+#### All Services
+
+in the root directory
+
+```
+docker compose up -d
+```
+
+you can access the frontend at http://localhost:3000
+you can access the backend at http://localhost:3001
+you can access the ml-backend at http://localhost:8000/docs
+
+to stop the services
+
+```
+docker compose down
+```

@@ -1,1 +1,1 @@
-## this is the frontend for picScribe
+## this is the frontend for StarClassifier
