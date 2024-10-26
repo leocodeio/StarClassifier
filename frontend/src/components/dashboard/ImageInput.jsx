@@ -1,6 +1,7 @@
 import { Button, FileInput, Label } from "flowbite-react";
 import React, { useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const ImageInput = () => {
   const [image, setImage] = useState(null);
@@ -16,13 +17,13 @@ const ImageInput = () => {
     e.preventDefault();
 
     if (!image) {
-      alert("Please select an image first!");
+      toast.error("Please select an image first!");
       return;
     }
 
     const formData = new FormData();
     formData.append("image_data", image, image.name);
-    console.log(process.env.REACT_APP_ML_BACKEND_URL);
+    // console.log(process.env.REACT_APP_ML_BACKEND_URL);
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_ML_BACKEND_URL}/classify/`,
@@ -36,7 +37,7 @@ const ImageInput = () => {
       );
       setResult(response.data);
     } catch (error) {
-      console.error("Error occurred:", error);
+      toast.error(error.response.data.message);
     }
   };
 
