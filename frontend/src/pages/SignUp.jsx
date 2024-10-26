@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAccountContext } from "../context/AccountContext";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -21,7 +22,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      alert("Passwords do not match");
+      toast.error("Password do not match")
       return;
     }
     // console.log(email, password);
@@ -35,10 +36,12 @@ const SignUp = () => {
         .then((res) => {
           // console.log(res);
           setId(res.data.id);
+          toast.success("User Created Successfully")
           navigate("/dashboard");
         });
     } catch (error) {
-      console.error("Signup error:", error);
+      console.log(error);
+      toast.error(error.response.data.message);
     }
   };
   return (
