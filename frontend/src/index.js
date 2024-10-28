@@ -7,7 +7,7 @@ import AccountProvider from "./context/AccountContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-     <AccountProvider>  {/* Wrap App with AccountProvider */}
+     <AccountProvider> 
       <App />
     </AccountProvider>
   </React.StrictMode>
