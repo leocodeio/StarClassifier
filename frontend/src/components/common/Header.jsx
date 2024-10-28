@@ -3,16 +3,25 @@ import { useNavigate } from "react-router-dom";
 import { useAccountContext } from "../../context/AccountContext";
 import { Button } from "flowbite-react";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const Header = () => {
   const { setId } = useAccountContext();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    setId(null);
-    toast.success("Logged Out Successfully")
-    navigate("/");
-  };
+  const handleLogout = async () => {
+    try {
+      const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/logout`, {
+        withCredentials: true,
+      });
+      toast.success(data.message);
+      setId(null);
+      navigate('/');
+    }
+    catch (error) {
+      toast.error(error.response.data.message);
+    }
+  }
 
   return (
     <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">

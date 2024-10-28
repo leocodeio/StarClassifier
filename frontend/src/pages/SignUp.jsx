@@ -32,15 +32,19 @@ const SignUp = () => {
         .post(`${process.env.REACT_APP_BACKEND_URL}/user/register`, {
           email,
           password,
-        })
+        },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          })
         .then((res) => {
-          // console.log(res);
-          setId(res.data.id);
+          setId(1);
           toast.success("User Created Successfully")
           navigate("/dashboard");
         });
     } catch (error) {
-      console.log(error);
       toast.error(error.response.data.message);
     }
   };
